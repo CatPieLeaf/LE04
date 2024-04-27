@@ -6,19 +6,21 @@ import java.util.Random;
 import java.util.Scanner;
 public class View {
 
+    private Control controle = new Control();
     
-    
-    public static void runCode(){
+    public View(){}
+
+    public void runCode(){
         viewOptions();
         userInputOptions();
     }
 
-    public static void viewOptions(){
+    public void viewOptions(){
         System.out.printf("Bem vindo a bibliotéca Santo Paulinho.\nQual atividade você gostaria de realizar?");
         System.out.printf("\n1)Pegar Livro01\n2)Pegar Livro02\n3)Pegar um livro aleatório\n");
     }
 
-    public static void userInputOptions(){
+    public void userInputOptions(){
         Scanner input = new Scanner(System.in);
         int value = input.nextInt();
         Random rand = new Random();
@@ -26,23 +28,23 @@ public class View {
         
         switch (value) {
             case 1:
-                View.optiosOutput(1);    
+                optiosOutput(1);    
                 break;
             case 2:
-                View.optiosOutput(2);  
+                optiosOutput(2);  
                 break;
             case 3:
-                View.optiosOutput(x);
+                optiosOutput(x);
                 break;
             default:
-                View.optiosOutput(value);  
+                optiosOutput(value);  
                 break;
             }
         input.close();
     }
 
-    public static void optiosOutput (int opt){
-        Livro[] livros = Control.getLivros();
+    public void optiosOutput (int opt){
+        Livro[] livros = controle.getLivros();
         switch (opt) {
             case 1:
                 System.out.printf("\nTitulo: "+livros[0].getTitulo()+"\nCódigo: "+livros[0].getCodigo()+"\nAutores: "+showAutores(1)+"\nISBN: "+livros[0].getIsbn()+"\nAno: "+livros[0].getAno()+"\n");
@@ -55,8 +57,9 @@ public class View {
                 break;
         }
     }
-    public static String showAutores(int Index){
-        String[] autores1 = Control.getAutoresL1(), autores2 = Control.getAutoresL2();
+
+    public String showAutores(int Index){
+        String[] autores1 = controle.getAutoresL1(), autores2 = controle.getAutoresL2();
         String message = "";
         switch (Index) {
             case 1:
