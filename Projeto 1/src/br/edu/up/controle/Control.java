@@ -1,27 +1,21 @@
 package br.edu.up.controle;
-import br.edu.up.tela.*;
-import java.util.Scanner;
-import java.util.Random;
+import br.edu.up.modelo.*;
+
 public class Control {
-    public static void runAction(){
-        Scanner input = new Scanner(System.in);
-        int value = input.nextInt();
-        Random rand = new Random();
-        int x = rand.nextInt(2)+1;
-        switch (value) {
-            case 1:
-                View.option(1);    
-                break;
-            case 2:
-                View.option(2);  
-                break;
-            case 3:
-                View.option(x);
-                break;
-            default:
-                View.option(value);  
-                break;
-            }
-        input.close();
+    private static String[] autoresL1 = {"Cay S. Horstmann","Gary Cornell"}, autoresL2 = {"Harvey Deitel"};
+    private static Livro[] livros = 
+    {new Livro("Core Java 2", "1598FHK", autoresL1, "0130819336", 2005),
+    new Livro("Java, Como programar", "9865PLO", autoresL2, "0130341517", 2015)};
+
+    public Control(){}
+
+    public Livro[] getLivros() {
+        return livros;
+    }
+    public String[] getAutoresL1() {
+        return autoresL1;
+    }
+    public static String[] getAutoresL2() {
+        return autoresL2;
     }
 }
