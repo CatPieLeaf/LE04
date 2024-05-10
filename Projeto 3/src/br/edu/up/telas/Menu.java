@@ -62,6 +62,7 @@ public class Menu {
                 default:
                     break;
             }
+            scanner.close();
         }
     }
 
@@ -91,6 +92,7 @@ public class Menu {
                 break;
             }
         }
+        scanner.close();
         control.setLivros(livros);
         limpar();
     }
@@ -155,6 +157,7 @@ public class Menu {
                 break;
 
         }
+        scanner.close();
     }
 
     public static void limpar() {
