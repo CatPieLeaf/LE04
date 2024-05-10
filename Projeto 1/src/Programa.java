@@ -1,7 +1,8 @@
-import br.edu.up.tela.*;
+import br.edu.up.tela.Menu;
+
 public class Programa {
     public static void main(String[] args) throws Exception {
-        View tela = new View();
+        Menu tela = new Menu();
         tela.runCode();
     }
 }

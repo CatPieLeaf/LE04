@@ -1,13 +1,14 @@
 package br.edu.up.controle;
-import br.edu.up.modelo.*;
+import br.edu.up.modelo.Livro;
 
-public class Control {
+public class ControleEstante {
     private String[] autoresL1 = {"Cay S. Horstmann","Gary Cornell"}, autoresL2 = {"Harvey Deitel"};
-    private Livro[] livros = 
-    {new Livro("Core Java 2", "1598FHK", autoresL1, "0130819336", 2005),
-    new Livro("Java, Como programar", "9865PLO", autoresL2, "0130341517", 2015)};
+    private Livro[] livros = {
+        new Livro("Core Java 2", "1598FHK", autoresL1, "0130819336", 2005),
+        new Livro("Java, Como programar", "9865PLO", autoresL2, "0130341517", 2015)
+    };
 
-    public Control(){}
+    public ControleEstante(){}
 
     public Livro[] getLivros() {
         return livros;
