@@ -1,14 +1,18 @@
-Cenário 6: Controle de tráfego aéreo
-Um aeroporto precisa-se registrar informações sobre as diferentes pessoas que nele trafegam.
-Todas as pessoas possuem nome e rg. As pessoas se dividem entre passageiros e tripulação. Os
-passageiros possuem um identificador de bagagem e a sua passagem. Sobre a passagem, armazena-se
-o número do acento, a classe do acento e a data do voo, contendo dia, mês, ano, hora e minuto de
-partida. Sobre a tripulação, sabe-se a sua identificação aeronáutica e matrícula do funcionário. Dos
-comandantes, registra-se o seu total de horas de voo e dos comissários os idiomas em que possuem
-fluência. Todas as pessoas possuem ainda informações sobre a aeronave em que farão o voo. Sobre
-ela, armazena-se o seu código, tipo e quantidade de assentos. O sistema deve ser desenvolvido no
-padrão arquitetural Model-View-Controller (MVC), possuir uma classe Programa que inicia a execução
-do software e um menu que permita ao usuário realizar as operações necessários para o controle do
-tráfego. 
+Para a execução do software será necessário criar a classe Programa e utilizar o padrão Model-ViewController (MVC) para organizar a arquitetura do software. A classe Contato é abstrata (não permite a
+geração de objetos). Os valores passados aos objetos criados pelas classes Pessoal e Comercial devem
+ser lidos do teclado.
 
-**Colocar enunciado da questão neste ReadMe file
+De acordo com as classes implementadas, implemente uma agenda de contatos com um menu onde é
+permitido:
+
+1. Incluir um contato pessoal
+
+2. Incluir um contato comercial
+
+3. Excluir um contato pelo código
+
+4. Consultar um contato pelo código
+
+5. Listar todos os contatos
+
+6. Sair do programa
