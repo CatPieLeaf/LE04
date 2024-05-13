@@ -2,6 +2,7 @@ package br.edu.up.models;
 
 public class Professor extends Pessoa {
     private int idCurriculo;
+    //Os professores possuem número de identificação do seu currículo Lattes 
     private String titulo;
     
     public int getIdCurriculo() {
