@@ -5,10 +5,8 @@ public class Comercial extends Contato {
 
     public Comercial(int codigo, String nome, String telefone, String cnpj)//?????
     {
+        super(codigo, nome, telefone);
         this.setCnpj(cnpj);
-        super.setCodigo(codigo);
-        super.setNome(nome);
-        super.setTelefone(telefone);
     }
 
     public String getCnpj() {

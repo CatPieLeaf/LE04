@@ -5,10 +5,8 @@ public class Pessoal extends Contato {
 
     public Pessoal(int codigo, String nome, String telefone, String aniversario)//?????
     {
+        super(codigo, nome, telefone);
         this.setAniversario(aniversario);
-        super.setCodigo(codigo);
-        super.setNome(nome);
-        super.setTelefone(telefone);
     }
 
     public String getAniversario() {
@@ -21,6 +19,6 @@ public class Pessoal extends Contato {
     
     @Override
     public String toString() {
-        return super.getCodigo() + '\n' + super.getNome() + '\n' + super.getTelefone() +'\n' + this.cnpj;
+        return super.getCodigo() + '\n' + super.getNome() + '\n' + super.getTelefone() +'\n' + this.aniversario;
     }
 }
