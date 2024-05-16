@@ -2,6 +2,7 @@ package br.edu.up.models;
 
 public class Pessoal extends Contato {
     private String aniversario;
+    public Pessoal(){}
 
     public Pessoal(int codigo, String nome, String telefone, String aniversario)//?????
     {
@@ -19,6 +20,6 @@ public class Pessoal extends Contato {
     
     @Override
     public String toString() {
-        return super.getCodigo() + '\n' + super.getNome() + '\n' + super.getTelefone() +'\n' + this.aniversario;
+        return super.toString() + this.aniversario;
     }
 }

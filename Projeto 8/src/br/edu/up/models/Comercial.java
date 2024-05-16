@@ -3,6 +3,9 @@ package br.edu.up.models;
 public class Comercial extends Contato {
     private String cnpj;
 
+    public Comercial(){
+
+    }
     public Comercial(int codigo, String nome, String telefone, String cnpj)//?????
     {
         super(codigo, nome, telefone);
@@ -20,7 +23,7 @@ public class Comercial extends Contato {
     
     @Override
     public String toString() {
-        return super.getCodigo() + '\n' + super.getNome() + '\n' + super.getTelefone() +'\n' + this.cnpj;
+        return super.toString() + this.cnpj;
     }
 
 }

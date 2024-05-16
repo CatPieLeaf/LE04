@@ -3,7 +3,7 @@ package br.edu.up.models;
 public abstract class Contato {
     private int codigo;
     private String nome, telefone;
-    
+    public Contato(){}
     public Contato(int codigo, String nome, String telefone)
     {
         this.setCodigo(codigo);
@@ -32,6 +32,6 @@ public abstract class Contato {
     
     @Override
     public String toString() {
-        return this.codigo + '\n' + this.nome + '\n' + this.telefone +'\n';
+        return "\n |" +this.codigo + "|\n" + this.nome + '\n' + this.telefone +'\n';
     }
 }
