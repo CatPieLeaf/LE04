@@ -4,7 +4,11 @@ public abstract class Pessoa {
     private String nome;
     private int rg;
     private int matricula;
-
+    Pessoa(String nome, int rg, int matricula){
+        this.setNome(nome);
+        this.setRg(rg);
+        this.setMatricula(matricula);
+    }
     public int getMatricula() {
         return matricula;
     }
