@@ -3,21 +3,17 @@ package br.edu.up.telas;
 import br.edu.up.controles.*;
 import br.edu.up.telas.*;
 import br.edu.up.modelos.*;
-
-import java.util.Scanner;
+import br.edu.up.util.Prompt;
 
 public class Menu {
     private ControleDeCarro controle;
     private ModeloDeCarro[] modelo = new ModeloDeCarro[10];
-    private Scanner scanner = new Scanner(System.in);
 
     public void run() {
         while (true) {
-
             System.out.println("1: colocar carro");
             System.out.println("2: tirar carro");
-            Scanner scanner = new Scanner(System.in);
-            int escolha = scanner.nextInt();
+            int escolha = Prompt.lerInteiro();
             switch (escolha) {
                 case 1:
                     colocarCarro();
@@ -27,7 +23,6 @@ public class Menu {
                 default:
                     break;
             }
-            scanner.close();
         }
     }
 
@@ -35,18 +30,15 @@ public class Menu {
         for (int i = 0; i < modelo.length; i++) {
             if (modelo[i] == null) {
                 modelo[i] = new ModeloDeCarro(null, null, null);
-                // mew
-                System.out.println("me diga a placa do carro");
-                modelo[i].setPlaca(scanner.nextLine());
-                System.out.println("me diga o modelo do carro");
-                modelo[i].setModelo(scanner.nextLine());
-                System.out.println("me diga a cor do carro");
-                modelo[i].setCor(scanner.nextLine());
+                // Nyaw
+                modelo[i].setPlaca(Prompt.lerLinha("Insira a placa do carro"));
+                modelo[i].setModelo(Prompt.lerLinha("Insira o modelo do carro"));
+                modelo[i].setCor(Prompt.lerLinha("Insira a cor do carro"));
                 break;
             }
         }
         controle = new ControleDeCarro(modelo);
-        // mew
+        // Mreow
     }
 
     public void tirarCarro() {
