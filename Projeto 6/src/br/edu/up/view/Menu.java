@@ -3,6 +3,7 @@ import br.edu.up.models.*;
 import br.edu.up.controller.*;
 import java.util.Scanner;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Menu {
     // Um aeroporto precisa-se registrar informações sobre as diferentes pessoas que nele trafegam.
@@ -11,8 +12,8 @@ public class Menu {
     // Pelo menos 1 de cada
     private Scanner input = new Scanner(System.in);
     private Date data;
-    private Controle controller = new Controle();
     private Aeronave aeronave = new Aeronave( 1, 180, "comercial");
+    private Controle controller = new Controle();
 
     public void run(){
         flightDate();
@@ -21,29 +22,31 @@ public class Menu {
     }
 
     public void actions(){
-        System.out.println("---------------------------------------");
-        System.out.println("Escolha uma ação:");
-        System.out.println("1) adicionar passageiro");
-        System.out.println("2) adicionar comissário");
-        System.out.println("3) adicionar Comandante");
-        System.out.println("4) decolar (Requer no minimo 2 tripulantes e 5 passageiros)");
-        System.out.println("5) cancelar voo");
-        System.out.println("---------------------------------------");
+        System.out.println("----------------------------ACTIONS------------------------------------------------");
+        System.out.println("| Escolha uma ação:                                                               |");
+        System.out.println("| 1) adicionar passageiro                                                         |");
+        System.out.println("| 2) adicionar comissário                                                         |");
+        System.out.println("| 3) adicionar Comandante                                                         |");
+        System.out.println("| 4) decolar (Requer no minimo 1 comandante, 1 comissário e 1 passageiro)         |");
+        System.out.println("| 5) cancelar voo                                                                 |");
+        System.out.println("-----------------------------------------------------------------------------------");
         int value = input.nextInt();
         input.nextLine();
         switch (value) {
             case 1:
-            addPassageiroView();
+                addPassageiroView();
                 break;
             case 2:
-            addComissarioView();
+                addComissarioView();
                 break;
             case 3:
-            addComandanteView();
+                addComandanteView();
                 break;
             case 4:
+                decolar();
                 break;
             case 5:
+                cancelar();
                 break;
         
             default:
@@ -87,13 +90,15 @@ public class Menu {
         System.out.println("Quantos idiomas o comissario sabe?");
         int valor = input.nextInt();
         input.nextLine();
-        String[] idiomas = new String[valor];
+        ArrayList<String> idiomas = new ArrayList<String>();
         for (int i = 0; i < valor; i++) {
             System.out.println("Escreva o idioma no qual ele sabe: ");
-            idiomas[i] = input.nextLine();
+            idiomas.add(input.nextLine());
         }
-        
-        controller.addComissario(nome, rg, idAeronauticam, matricula, idiomas, aeronave);
+        for (int i = 0; i < valor; i++) {
+            System.out.println("O Comissario sabe falar "+idiomas.get(i).toString());
+        }
+        controller.addComissario(nome, rg, idAeronauticam, matricula, idiomas, this.aeronave);
         actions();
     }
     //  adicionar Comandante");
@@ -116,15 +121,31 @@ public class Menu {
         actions();
     }
 
-    //  decolar (Requer no minimo 2 tripulantes e 5 passageiros)");
+    //  decolar (Requer no minimo 1 comandante, 2 comissários e 5 passageiros)");
+    public void decolar(){
+        controller.verifyMinimum();
+        if (controller.getQuantidadeComan()>=1 && controller.getQuantidadeComis() >= 1 && controller.getQuantidadePass() >= 1){
+            System.out.println("O avião decolou com sucesso\n tendo "+controller.getQuantidadeComan()+" Comandate(s)/ "+controller.getQuantidadeComis()+" comissários/ "+controller.getQuantidadePass()+" passageiros \n");
+            flightDate();
+        } else {
+            System.out.println("O avião não pode decolar ainda, requerimentos minimos precisam ser atendidos");
+            System.out.println("Comandantes (minimo 1) = "+controller.getQuantidadeComan());
+            System.out.println("Comissários (minimo 1) = "+controller.getQuantidadeComis());
+            System.out.println("Passageiros (minimo 1) = "+controller.getQuantidadePass());
+        }
+        actions();
+    }
     //  cancelar voo");
+    public void cancelar(){
+        System.out.println("O voo foi cancelado");
+    }
 
     @SuppressWarnings("deprecation")
     public void flightDate()
     {    
-        System.out.println("Decida a data no qual o avião ira decolar: ");
-        System.out.println("Ano: 2024");
-        int year = 2024;
+        System.out.println("Decida a data no qual o avião comercial ira decolar: ");
+        System.out.println("Ano de decolagem");
+        int year = input.nextInt();
 
         System.out.println("Mês(1 - 12)");
         int month = input.nextInt()-1;

@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class Comissario extends Tripulacao{
     private ArrayList<String> idiomas;
 
-    public Comissario(String nome, int rg, int idAeronauticam, int matricula,String[] idiomas, Aeronave aeronave)
+    public Comissario(){}
+    public Comissario(String nome, int rg, int idAeronauticam, int matricula,ArrayList<String> idiomas, Aeronave aeronave)
     {
         super.setNome(nome);
         super.setRg(rg);
@@ -12,9 +13,7 @@ public class Comissario extends Tripulacao{
         super.setIdAeronauticam(idAeronauticam);
         super.setMatricula(matricula);
         //---Tripulação
-        for(int i =0; i< idiomas.length; i++){
-            this.idiomas.add(idiomas[i]);
-        }
+        this.idiomas = idiomas;
         //---Idiomas
         //Adiciona o array[] ao ArrayList<> 
     }

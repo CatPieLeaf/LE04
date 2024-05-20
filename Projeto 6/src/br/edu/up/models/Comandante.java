@@ -2,7 +2,7 @@ package br.edu.up.models;
 
 public class Comandante extends Tripulacao{
     private int total_horas_voo;
-    
+    public Comandante(){}
     public Comandante(String nome, int rg, int idAeronauticam, int matricula, int total_horas_voo, Aeronave aeronave)
     {
         super.setNome(nome);

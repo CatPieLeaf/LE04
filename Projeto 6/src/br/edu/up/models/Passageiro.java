@@ -5,6 +5,7 @@ public class Passageiro extends Pessoa{
     private int id_Bagagem; 
     private Passagem passagem;
 
+    public Passageiro(){}
     public Passageiro(String nome, int rg, Aeronave aeronave, int id_bagagem, String classe_do_assento, int seat_number , Date flightDate){
         
         super.setNome(nome);
