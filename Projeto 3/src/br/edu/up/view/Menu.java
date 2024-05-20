@@ -2,7 +2,6 @@ package br.edu.up.view;
 
 import br.edu.up.controller.ControleEstande;
 import br.edu.up.model.Livro;
-import java.util.Scanner;
 import br.edu.up.util.Prompt;
 
 public class Menu {
@@ -26,34 +25,40 @@ public class Menu {
             // Instanciação do controle da estante e do scanner
 
             // Leitura da escolha do usuário
-            String escolha = Prompt.lerLinha();
+            String escolha = Prompt.lerLinha().toLowerCase();;
 
             switch (escolha) {
-                case "Push":
+                case "push":
                     colocarLivros();
                     break;
-                case "Pop":
+                case "pop":
                     removerLivros();
                     break;
-                case "Peek":
+                case "peek":
                     visualizarLivros();
                     break;
-                case "Listar":
-                    Livro[] livros = control.getLivros();
-
-                    for (int i = 0; i < 5; i++) {
-                        if (livros[i] != null) {
-                            String srt = " Título: " + livros[i].getTitulo() + " Autores: " + livros[i].getAutores()
-                                    + " Ano: " + livros[i].getAno() + " Código: " + livros[i].getCodigo() + " ISBN: "
-                                    + livros[i].getIsbn();
-                            System.out.println(srt);
-                        } else
-                            System.out.println("livro na posiçao " + i + " esta vazio");
-                    }
+                case "pistar":
+                    listarLivros();
                     break;
                 default:
                     state = 0;
                     break;
+            }
+        }
+    }
+
+    public void listarLivros() {
+        for (int i = 0; i < 5; i++) {
+            if (livros[i] != null) {
+                Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
+                Prompt.imprimir("Autores = " + livros[i].getAutores() + "  Titulo = " + livros[i].getTitulo()
+                    + "  Codigo = " + livros[i].getCodigo() + "  Ano = " + livros[i].getAno() + "  ISBN = "
+                    + livros[i].getIsbn());
+                Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
+            } else {
+                Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
+                Prompt.imprimir("Não há um livro na posição " + (i+1));
+                Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
             }
         }
     }
@@ -93,56 +98,17 @@ public class Menu {
     }
 
     public void visualizarLivros() {
-        System.out.println("me diga de 1 a 5 qual livro vc quer ver");
-        Scanner scanner = new Scanner(System.in);
-        int escolha = scanner.nextInt();
-        switch (escolha) {
-            case 1:
-                limpar();
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                System.out.println("Autores = " + livros[0].getAutores() + "Titulo = " + livros[0].getTitulo()
-                        + "   codigo = " + livros[0].getCodigo() + "   ano = " + livros[0].getAno() + "   Isbn = "
-                        + livros[0].getIsbn());
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                break;
-            case 2:
-                limpar();
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                System.out.println("Autores = " + livros[1].getAutores() + "Titulo = " + livros[1].getTitulo()
-                        + "   codigo = " + livros[1].getCodigo() + "   ano = " + livros[1].getAno() + "   Isbn = "
-                        + livros[1].getIsbn());
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                break;
-            case 3:
-                limpar();
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                System.out.println("Autores = " + livros[2].getAutores() + "Titulo = " + livros[2].getTitulo()
-                        + "   codigo = " + livros[2].getCodigo() + "   ano = " + livros[2].getAno() + "   Isbn = "
-                        + livros[2].getIsbn());
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                break;
-            case 4:
-                limpar();
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                System.out.println("Autores = " + livros[3].getAutores() + "Titulo = " + livros[3].getTitulo()
-                        + "   codigo = " + livros[3].getCodigo() + "   ano = " + livros[3].getAno() + "   Isbn = "
-                        + livros[3].getIsbn());
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                break;
-            case 5:
-                limpar();
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                System.out.println("Autores = " + livros[4].getAutores() + "Titulo = " + livros[4].getTitulo()
-                        + "   codigo = " + livros[4].getCodigo() + "   ano = " + livros[4].getAno() + "   Isbn = "
-                        + livros[4].getIsbn());
-                System.out.println(colored(255, 0, 0, "-------------------------------------------------------"));
-                break;
-
-            default:
-                break;
-
+        int escolha = Prompt.lerInteiro("Escolha qual livro você gostaria de visualizar (1 a 5)");
+        limpar();
+        if (escolha > 5) Prompt.imprimir("O limite é de 1 a 5");
+        else if(livros[escolha-1] == null) Prompt.imprimir("Livro não encontrado!");
+        else {
+            Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
+            Prompt.imprimir("Autores = " + livros[escolha-1].getAutores() + "  Titulo = " + livros[escolha-1].getTitulo()
+                + "  Codigo = " + livros[escolha-1].getCodigo() + "  Ano = " + livros[escolha-1].getAno() + "  ISBN = "
+                + livros[escolha-1].getIsbn());
+            Prompt.imprimir(colored(255, 0, 0, "-------------------------------------------------------"));
         }
-        scanner.close();
     }
 
     public static void limpar() {
