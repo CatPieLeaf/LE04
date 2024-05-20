@@ -1,6 +1,6 @@
 package br.edu.up.controller;
 
-import br.edu.up.modelos.Livro;
+import br.edu.up.model.Livro;
 
 public class ControleEstande {
 

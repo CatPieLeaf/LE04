@@ -3,6 +3,7 @@ package br.edu.up.view;
 import br.edu.up.controller.ControleEstande;
 import br.edu.up.model.Livro;
 import java.util.Scanner;
+import br.edu.up.util.Prompt;
 
 public class Menu {
 
@@ -12,37 +13,32 @@ public class Menu {
     // Método para executar o menu da estante de livros
     public void run() {
         // Mensagem inicial
-        while (true) {
-            System.out.println("Em uma estante de livros tem 5 modulares   ");
+        int state = 1;
+        while (state == 1) {
+            System.out.println("\nEm uma estante de livros tem 5 modulares   ");
             System.out.println(colored(15, 195, 255, "-------------------------------------------"));
-            System.out.println(colored(15, 195, 255, "| " + "1. Push = inserir livro                  |"));
-            System.out.println(colored(15, 195, 255, "| " + "2. Pop = remover livro                   |"));
-            System.out.println(colored(15, 195, 255, "| " + "3. Peek = visualizar livro               |"));
-            System.out.println(colored(15, 195, 255, "| " + "4. Listar = listar todos os livros       |"));
-            System.out.println(colored(15, 195, 255, "| " + "5. Sair                                  |"));
+            System.out.println(colored(15, 195, 255, "| " + "[Push] = Inserir livro                  |"));
+            System.out.println(colored(15, 195, 255, "| " + "[Pop] = Remover livro                   |"));
+            System.out.println(colored(15, 195, 255, "| " + "[Peek] = Visualizar livro               |"));
+            System.out.println(colored(15, 195, 255, "| " + "[Listar] = Listar todos os livros       |"));
+            System.out.println(colored(15, 195, 255, "| " + "[Sair] = Encerrar                       |"));
             System.out.println(colored(15, 195, 255, "-------------------------------------------"));
             // Instanciação do controle da estante e do scanner
 
-            Scanner scanner = new Scanner(System.in);
-
             // Leitura da escolha do usuário
-            int escolha = scanner.nextInt();
-            scanner.nextLine();
+            String escolha = Prompt.lerLinha();
 
             switch (escolha) {
-                case 999999:
-                    sans();
-                    break;
-                case 1:
+                case "Push":
                     colocarLivros();
                     break;
-                case 2:
+                case "Pop":
                     removerLivros();
                     break;
-                case 3:
+                case "Peek":
                     visualizarLivros();
                     break;
-                case 4:
+                case "Listar":
                     Livro[] livros = control.getLivros();
 
                     for (int i = 0; i < 5; i++) {
@@ -55,36 +51,25 @@ public class Menu {
                             System.out.println("livro na posiçao " + i + " esta vazio");
                     }
                     break;
-                case 5:
-
-                    // Sair do menu
-                    break;
                 default:
+                    state = 0;
                     break;
             }
-            scanner.close();
         }
     }
 
     public void colocarLivros() {
-        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 5; i++) {
             if (livros[i] == null) {
-                System.out.println("me diga qual é o titulo do livro");
-                String titulo = scanner.nextLine();
+                String titulo = Prompt.lerLinha("Insira o titulo do livro");
 
-                System.out.println("autores: ");
-                String autores = scanner.nextLine();
+                String autores = Prompt.lerLinha("Insira os autores do livro: ");
 
-                System.out.println("codigo: ");
-                String codigo = scanner.nextLine();
+                String codigo = Prompt.lerLinha("Insira o código do livro: ");
 
-                System.out.println("ano: ");
-                int ano = scanner.nextInt();
-                scanner.nextLine();
+                int ano = Prompt.lerInteiro("Insira o ano do livro: ");
 
-                System.out.println("isbn: ");
-                String isbn = scanner.nextLine();
+                String isbn = Prompt.lerLinha("Insira o ISBN do livro: ");
 
                 livros[i] = new Livro(codigo, titulo, autores, isbn, ano);
                 System.out.println("Livro inserido:");
@@ -92,7 +77,6 @@ public class Menu {
                 break;
             }
         }
-        scanner.close();
         control.setLivros(livros);
         limpar();
     }
@@ -101,6 +85,7 @@ public class Menu {
         for (int i = livros.length - 1; i >= 0; i--) {
             if (livros[i] != null) {
                 livros[i] = null;
+                Prompt.imprimir("Livro removido com sucesso!");
                 break;
             }
         }
@@ -187,9 +172,5 @@ public class Menu {
         gb = Math.max(0, Math.min(gb, 255));
         bb = Math.max(0, Math.min(bb, 255));
         return String.format("\033[38;2;%d;%d;%dm\033[48;2;%d;%d;%dm%s\033[0m", r, g, b, rb, gb, bb, text);
-    }
-
-    public void sans() {
-        System.out.println("ze");
     }
 }
