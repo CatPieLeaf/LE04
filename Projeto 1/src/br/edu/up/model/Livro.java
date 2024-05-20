@@ -1,6 +1,8 @@
-package br.edu.up.modelo;
+package br.edu.up.model;
 
 public class Livro {
+    
+    //Modelos conversam entre si.
     private String codigo, titulo, isbn;
     private int ano;
     private String[] autores;

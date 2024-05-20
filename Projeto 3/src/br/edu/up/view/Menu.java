@@ -1,7 +1,7 @@
-package br.edu.up.telas;
+package br.edu.up.view;
 
-import br.edu.up.controles.ControleEstande;
-import br.edu.up.modelos.Livro;
+import br.edu.up.controller.ControleEstande;
+import br.edu.up.model.Livro;
 import java.util.Scanner;
 
 public class Menu {

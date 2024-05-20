@@ -5,7 +5,6 @@ public class Passagem {
     private int seat_number;
     private Date flightDate;
     //new Date(int year, int month, int date, int hrs, int minutes)
-
     public Passagem( String classe_do_assento, int seat_number ,Date flightDate){
         this.setClasse_do_assento(classe_do_assento);
         this.setSeat_number(seat_number);

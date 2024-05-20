@@ -1,4 +1,4 @@
-import br.edu.up.tela.Menu;
+import br.edu.up.view.Menu;
 
 public class Programa {
     public static void main(String[] args) throws Exception {

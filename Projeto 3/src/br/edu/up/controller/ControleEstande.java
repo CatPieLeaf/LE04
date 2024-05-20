@@ -1,4 +1,4 @@
-package br.edu.up.controles;
+package br.edu.up.controller;
 
 import br.edu.up.modelos.Livro;
 

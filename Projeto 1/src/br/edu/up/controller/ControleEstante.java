@@ -1,7 +1,8 @@
-package br.edu.up.controle;
-import br.edu.up.modelo.Livro;
+package br.edu.up.controller;
+import br.edu.up.model.Livro;
 
 public class ControleEstante {
+    //Controller conversa apenas com os modelos.
     private String[] autoresL1 = {"Cay S. Horstmann","Gary Cornell"}, autoresL2 = {"Harvey Deitel"};
     private Livro[] livros = {
         new Livro("Core Java 2", "1598FHK", autoresL1, "0130819336", 2005),

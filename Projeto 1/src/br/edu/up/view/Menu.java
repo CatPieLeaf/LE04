@@ -1,13 +1,13 @@
-package br.edu.up.tela;
+package br.edu.up.view;
 
-import br.edu.up.controle.ControleEstante;
-import br.edu.up.modelo.Livro;
+import br.edu.up.controller.ControleEstante;
+import br.edu.up.model.Livro;
 import br.edu.up.util.Prompt;
 
 import java.util.Random;
 
 public class Menu {
-
+    //View conversa com o output, modelos e controller.
     private ControleEstante controle = new ControleEstante();
 
     public Menu() {
