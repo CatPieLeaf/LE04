@@ -56,11 +56,14 @@ public class Evento {
         this.precoIngresso = precoIngresso;
     }
 
-    public Evento(String nome, String data, String local, int lotacaoMaxima, double precoIngresso) {
+    public Evento(String nome, String data, String local, int lotacaoMaxima, int quantidadeIngressos, double precoIngresso) {
         this.nome = nome;
         this.data = data;
         this.local = local;
         this.lotacaoMaxima = lotacaoMaxima;
+        this.quantidadeIngressos = quantidadeIngressos;
         this.precoIngresso = precoIngresso;
     }
+
+    
 }
