@@ -25,6 +25,15 @@ public class Aluno extends Pessoa{
         this.setCompetencias(competencia);
     }
 
+    //inicializa com mais de uma competência//Utilizando ArrayList
+    public Aluno(String nome, int rg, int matricula, int anoIngresso, String nomeCurso, String turno, Disciplina disciplina, ArrayList<String> competencia){
+        super(nome, rg, matricula);
+        this.setAnoIngresso(anoIngresso);
+        this.setNome(nomeCurso);
+        this.setTurno(turno);
+        this.addToDisciplinasMatri(disciplina);
+        this.setCompetencias(competencia);
+    }
     public int getAnoIngresso() {
         return anoIngresso;
     }
