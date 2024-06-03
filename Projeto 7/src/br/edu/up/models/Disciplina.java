@@ -8,6 +8,14 @@ public class Disciplina {
     private String curriculo;
     private Professor professor;
     private ArrayList<Aluno> alunos;
+    //Incializa sem alunos e sem professores
+    public Disciplina(String nome, int id, ArrayList<String> competenciasNecessarias, ArrayList<String> competenciaComplementares, String curriculo){
+        this.setNome(nome);
+        this.setId(id);
+        this.setCompetenciasNecessarias(competenciasNecessarias);
+        this.setCompetenciasComplementares(competenciaComplementares);
+        this.setCurriculo(curriculo);//set o curriculo ao qual a disciplina pertence
+    }
     //Inicializa com apenas 1 aluno
     public Disciplina(String nome, int id, ArrayList<String> competenciasNecessarias, ArrayList<String> competenciaComplementares, String curriculo, Professor professor, Aluno aluno){
         this.setNome(nome);
