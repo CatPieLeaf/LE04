@@ -16,8 +16,8 @@ public class Menu {
 
     public void run() {
         while (true) {
-            System.out.println("1: fazer reserva");
-            System.out.println("2: criar evento");
+            System.out.println("1: criar evento");
+            System.out.println("2: fazer reserva");
             System.out.println("3: ver todos os eventos e quantos ingressos foram comprados");
             System.out.println("4: ver detalhamento dos eventos");
             System.out.println("5: fazer reserva");

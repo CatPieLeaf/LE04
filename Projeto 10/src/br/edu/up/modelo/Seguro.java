@@ -3,11 +3,11 @@ package br.edu.up.modelo;
 import java.time.LocalDate;
 
 public abstract class Seguro {
-    String apolice;
-    Segurado segurado;
-    double VlrApolice;
-    LocalDate dtaInicio;
-    LocalDate darFim;
+    private String apolice;
+    private Segurado segurado;
+    private double VlrApolice;
+    private LocalDate dtaInicio;
+    private LocalDate darFim;
 
     public Seguro(String apolice, Segurado segurado, double vlrApolice, LocalDate dtaInicio, LocalDate darFim) {
         this.apolice = apolice;
